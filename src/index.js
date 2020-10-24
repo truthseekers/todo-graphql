@@ -7,11 +7,15 @@ type Query {
     user(userId: ID!): User!
 }
 
+type Mutation {
+  createUser(id: ID!, firstName: String!, email: String!, age: Int): User
+}
+
 type User {
     id: ID!
     firstName: String!
     email: String!
-    age: Int!
+    age: Int
 }
 
 `;
@@ -49,6 +53,27 @@ const resolvers = {
           return user;
         }
       });
+    },
+  },
+  Mutation: {
+    createUser: (parent, args, context, info) => {
+      const newUser = {
+        id: args.id,
+        firstName: args.firstName,
+        email: args.email,
+        age: args.age,
+      };
+
+      const userAlreadyExists = users.some((elem) => {
+        return elem.email == args.email;
+      });
+
+      if (userAlreadyExists) {
+        throw new Error("User already exists");
+      } else {
+        users.push(newUser);
+        return newUser;
+      }
     },
   },
   User: {
