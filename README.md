@@ -9,3 +9,6 @@ Lecture: Field Level Resolvers in GraphQL
 
 Lecture: Challenge: add age with multiplier
     Branch - change-age-done  && change-age-start
+
+Lecture: Query parameters and filtering results
+    Branch - challenge-query-parameters-done  (and -start)
