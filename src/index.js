@@ -10,6 +10,7 @@ type User {
     id: ID!
     firstName: String!
     email: String!
+    age: Int!
 }
 
 `;
@@ -19,11 +20,13 @@ let users = [
     id: "123",
     firstName: "Cindy",
     email: "cindy@cindy.com",
+    age: 27,
   },
   {
     id: "456",
     firstName: "Todd",
     email: "todd@todd.com",
+    age: 31,
   },
 ];
 
@@ -41,6 +44,11 @@ const resolvers = {
       return parent.firstName;
     },
     email: (parent) => "ilikepie@pie.com",
+    age: (parent) => {
+      console.log("age is: ", parent.age);
+      const randomNum = Math.floor(Math.random() * 4) + 1;
+      return parent.age * randomNum;
+    },
   },
 };
 
