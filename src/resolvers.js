@@ -1,0 +1,61 @@
+const { createUserId } = require("./utils");
+
+const newUserId = createUserId();
+
+const { users } = require("./usersData");
+
+const resolvers = {
+  Query: {
+    helloWorld: () => `Hello world! what a day!`,
+    users: (parent, args, context, info) => {
+      if (args.text) {
+        return users.filter((elem) =>
+          elem.firstName.toLowerCase().includes(args.text.toLowerCase())
+        );
+      }
+      return users;
+    },
+    user: (parent, args, context, info) => {
+      console.log(args);
+      return users.find((user) => {
+        if (user.id == args.userId) {
+          return user;
+        }
+      });
+    },
+  },
+  Mutation: {
+    createUser: (parent, args, context, info) => {
+      const userAlreadyExists = users.some((elem) => {
+        return elem.email == args.email;
+      });
+
+      if (userAlreadyExists) {
+        throw new Error("User already exists");
+      } else {
+        const newUser = {
+          id: newUserId(),
+          firstName: args.firstName,
+          email: args.email,
+          age: args.age,
+        };
+        users.push(newUser);
+        return newUser;
+      }
+    },
+  },
+  User: {
+    id: (parent) => parent.id,
+    firstName: (parent) => {
+      return parent.firstName;
+    },
+    email: (parent) => parent.email,
+    age: (parent) => {
+      return parent.age;
+    },
+  },
+};
+
+module.exports = {
+  resolvers,
+};
