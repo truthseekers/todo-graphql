@@ -12,3 +12,6 @@ Lecture: Challenge: add age with multiplier
 
 Lecture: Filtering results with parameters
     Branch - challenge-query-parameters-done  (and -start)
+
+Lecture: Mutations: Creating a user
+    Branch - mutation-create-user-done  (and -start)
