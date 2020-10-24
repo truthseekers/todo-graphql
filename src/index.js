@@ -8,7 +8,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(id: ID!, firstName: String!, email: String!, age: Int): User
+  createUser(firstName: String!, email: String!, age: Int): User
 }
 
 type User {
@@ -19,6 +19,17 @@ type User {
 }
 
 `;
+
+function createUserId() {
+  let id = 0;
+  function incrementId() {
+    id++;
+    return id;
+  }
+  return incrementId;
+}
+
+const newUserId = createUserId();
 
 let users = [
   {
@@ -57,13 +68,6 @@ const resolvers = {
   },
   Mutation: {
     createUser: (parent, args, context, info) => {
-      const newUser = {
-        id: args.id,
-        firstName: args.firstName,
-        email: args.email,
-        age: args.age,
-      };
-
       const userAlreadyExists = users.some((elem) => {
         return elem.email == args.email;
       });
@@ -71,6 +75,12 @@ const resolvers = {
       if (userAlreadyExists) {
         throw new Error("User already exists");
       } else {
+        const newUser = {
+          id: newUserId(),
+          firstName: args.firstName,
+          email: args.email,
+          age: args.age,
+        };
         users.push(newUser);
         return newUser;
       }

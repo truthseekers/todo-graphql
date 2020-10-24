@@ -15,3 +15,6 @@ Lecture: Filtering results with parameters
 
 Lecture: Mutations: Creating a user
     Branch - mutation-create-user-done  (and -start)
+
+Lecture: Auto Increment User Id
+    Branch - auto-increment-id-challenge-done (and -start)
