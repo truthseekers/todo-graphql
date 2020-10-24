@@ -4,6 +4,7 @@ const typeDefs = `
 type Query {
     helloWorld: String!
     users: [User!]!
+    user(userId: ID!): User!
 }
 
 type User {
@@ -36,18 +37,23 @@ const resolvers = {
     users: (parent, args, context, info) => {
       return users;
     },
+    user: (parent, args, context, info) => {
+      console.log(args);
+      return users.find((user) => {
+        if (user.id == args.userId) {
+          return user;
+        }
+      });
+    },
   },
   User: {
     id: (parent) => parent.id,
     firstName: (parent) => {
-      console.log("what is the parent: ", parent);
       return parent.firstName;
     },
-    email: (parent) => "ilikepie@pie.com",
+    email: (parent) => parent.email,
     age: (parent) => {
-      console.log("age is: ", parent.age);
-      const randomNum = Math.floor(Math.random() * 4) + 1;
-      return parent.age * randomNum;
+      return parent.age;
     },
   },
 };
