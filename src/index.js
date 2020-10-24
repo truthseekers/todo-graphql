@@ -3,7 +3,7 @@ const { GraphQLServer } = require("graphql-yoga");
 const typeDefs = `
 type Query {
     helloWorld: String!
-    users: [User!]!
+    users(text: String): [User!]!
     user(userId: ID!): User!
 }
 
@@ -35,6 +35,11 @@ const resolvers = {
   Query: {
     helloWorld: () => `Hello world! what a day!`,
     users: (parent, args, context, info) => {
+      if (args.text) {
+        return users.filter((elem) =>
+          elem.firstName.toLowerCase().includes(args.text.toLowerCase())
+        );
+      }
       return users;
     },
     user: (parent, args, context, info) => {
