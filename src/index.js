@@ -34,6 +34,14 @@ const resolvers = {
       return users;
     },
   },
+  User: {
+    id: (parent) => parent.id,
+    firstName: (parent) => {
+      console.log("what is the parent: ", parent);
+      return parent.firstName;
+    },
+    email: (parent) => parent.email,
+  },
 };
 
 const server = new GraphQLServer({
