@@ -40,7 +40,7 @@ const resolvers = {
       console.log("what is the parent: ", parent);
       return parent.firstName;
     },
-    email: (parent) => parent.email,
+    email: (parent) => "ilikepie@pie.com",
   },
 };
 
