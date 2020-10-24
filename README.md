@@ -18,3 +18,6 @@ Lecture: Mutations: Creating a user
 
 Lecture: Auto Increment User Id
     Branch - auto-increment-id-challenge-done (and -start)
+
+Lecture: Delete a User
+    Branch - challenge-delete-user-done (and -start)
