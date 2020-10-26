@@ -21,3 +21,6 @@ Lecture: Auto Increment User Id
 
 Lecture: Delete a User
     Branch - challenge-delete-user-done (and -start)
+
+Lecture: Challenge: update User
+    Branch - challenge-update-user-done (and -start)
