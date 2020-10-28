@@ -58,15 +58,19 @@ const resolvers = {
       // : "No user to delete";
     },
     updateUser: (_, args) => {
-      const user = users.find((elem) => {
-        if (elem.id == args.userId) {
-          elem.firstName = args.firstName ? args.firstName : elem.firstName;
-          elem.email = args.email ? args.email : elem.email;
-          elem.age = args.age ? args.age : elem.age;
-          return elem;
-        }
-      });
-      return user;
+      const userIndex = users.findIndex((elem) => elem.id == args.userId);
+
+      users[userIndex] = { ...users[userIndex], ...args.input };
+      return users[userIndex];
+      // const user = users.find((elem) => {
+      //   if (elem.id == args.userId) {
+      //     elem.firstName = args.firstName ? args.firstName : elem.firstName;
+      //     elem.email = args.email ? args.email : elem.email;
+      //     elem.age = args.age ? args.age : elem.age;
+      //     return elem;
+      //   }
+      // });
+      // return user;
     },
   },
   User: {

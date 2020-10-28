@@ -24,3 +24,6 @@ Lecture: Delete a User
 
 Lecture: Challenge: update User
     Branch - challenge-update-user-done (and -start)
+
+Lecture: Input Types in GraphQL
+    Branch - input-types-done  (and -start)
