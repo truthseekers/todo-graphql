@@ -1,6 +1,7 @@
 const { createUserId } = require("./utils");
 
 const newUserId = createUserId();
+const newTodoId = createUserId(); // only temporary.
 
 const { users } = require("./data/users");
 const { todos } = require("./data/todos");
@@ -66,15 +67,29 @@ const resolvers = {
 
       users[userIndex] = { ...users[userIndex], ...args.input };
       return users[userIndex];
-      // const user = users.find((elem) => {
-      //   if (elem.id == args.userId) {
-      //     elem.firstName = args.firstName ? args.firstName : elem.firstName;
-      //     elem.email = args.email ? args.email : elem.email;
-      //     elem.age = args.age ? args.age : elem.age;
-      //     return elem;
-      //   }
-      // });
-      // return user;
+    },
+    createTodo: (parent, args, context, info) => {
+      const newTodo = {
+        id: newTodoId(),
+        name: args.name,
+        isComplete: args.isComplete,
+        userId: args.userId,
+      };
+
+      todos.push(newTodo);
+      return newTodo;
+    },
+    deleteTodo: (parent, args, context, info) => {
+      let todo;
+      const todoToRemove = todos.findIndex((elem) => {
+        if (elem.id == args.todoId) {
+          todo = elem;
+          return true;
+        }
+        return false;
+      });
+      todo ? todos.splice(todoToRemove, 1) : "";
+      return todo;
     },
   },
   User: {

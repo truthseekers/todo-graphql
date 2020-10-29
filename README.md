@@ -30,3 +30,6 @@ Lecture: Input Types in GraphQL
 
 Lecture: One to many relationships
     Branch - one-to-many-done (and -start)
+
+Lecture: add and delete todos
+    Branch - add-delete-todos-done (and -start)
