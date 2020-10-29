@@ -2,6 +2,7 @@ type Query {
   helloWorld: String!
   users(text: String): [User!]!
   user(userId: ID!): User!
+  todos: [Todo!]!
 }
 
 type Mutation {
@@ -21,4 +22,13 @@ type User {
   firstName: String!
   email: String!
   age: Int
+  todos: [Todo!]!
+}
+
+type Todo {
+  id: ID!
+  name: String!
+  isComplete: Boolean!
+  userId: String!
+  user: User!
 }

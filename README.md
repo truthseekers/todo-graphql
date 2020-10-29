@@ -27,3 +27,6 @@ Lecture: Challenge: update User
 
 Lecture: Input Types in GraphQL
     Branch - input-types-done  (and -start)
+
+Lecture: One to many relationships
+    Branch - one-to-many-done (and -start)

@@ -2,7 +2,8 @@ const { createUserId } = require("./utils");
 
 const newUserId = createUserId();
 
-const { users } = require("./usersData");
+const { users } = require("./data/users");
+const { todos } = require("./data/todos");
 
 const resolvers = {
   Query: {
@@ -22,6 +23,9 @@ const resolvers = {
           return user;
         }
       });
+    },
+    todos: (parent, args, context, info) => {
+      return todos;
     },
   },
   Mutation: {
@@ -81,6 +85,15 @@ const resolvers = {
     email: (parent) => parent.email,
     age: (parent) => {
       return parent.age;
+    },
+    todos: (parent) => {
+      console.log("parent: ", parent);
+      return todos.filter((elem) => elem.userId == parent.id);
+    },
+  },
+  Todo: {
+    user: (parent) => {
+      return users.find((elem) => elem.id == parent.userId);
     },
   },
 };
