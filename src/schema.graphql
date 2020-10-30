@@ -31,6 +31,5 @@ type Todo {
   id: ID!
   name: String!
   isComplete: Boolean!
-  userId: String!
-  user: User!
+  users: [User!]!
 }

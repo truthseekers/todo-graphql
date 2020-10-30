@@ -5,6 +5,7 @@ const newTodoId = createUserId(); // only temporary.
 
 const { users } = require("./data/users");
 const { todos } = require("./data/todos");
+const { usersOnTodos } = require("./data/usersOnTodos");
 
 const resolvers = {
   Query: {
@@ -103,11 +104,23 @@ const resolvers = {
     },
     todos: (parent) => {
       console.log("parent: ", parent);
-      return todos.filter((elem) => elem.userId == parent.id);
+      const todoIds = [];
+
+      usersOnTodos.foreach((elem) => {
+        if (elem.userId == parent.id) {
+          todoIds.push(elem.todoId);
+        }
+      });
+
+      return todos.filter((elem) => {
+        return todoIds.includes(elem.id);
+      });
+
+      // return todos.filter((elem) => elem.userId == parent.id);
     },
   },
   Todo: {
-    user: (parent) => {
+    users: (parent) => {
       return users.find((elem) => elem.id == parent.userId);
     },
   },
