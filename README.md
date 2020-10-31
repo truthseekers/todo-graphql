@@ -33,3 +33,9 @@ Lecture: One to many relationships
 
 Lecture: add and delete todos
     Branch - add-delete-todos-done (and -start)
+
+
+------------------------- Prisma ------------------------
+
+Lecture: Installing Prisma & findMany users
+    Branch - prisma-setup-done (and -start)
