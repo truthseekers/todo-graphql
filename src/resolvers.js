@@ -30,7 +30,7 @@ const resolvers = {
       });
     },
     todos: (parent, args, context, info) => {
-      return todos;
+      return context.prisma.todo.findMany();
     },
   },
   Mutation: {

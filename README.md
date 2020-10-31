@@ -51,3 +51,6 @@ Lecture: Solution: Updating a user in Prisma
 
 Lecture: Prisma Add Todo Model & fix createTodo
     Branch - prisma-add-todo-model-done (and-start)
+
+Lecture: Query all todos with Prisma
+    Branch - prisma-query-all-todos-done (and -start)
