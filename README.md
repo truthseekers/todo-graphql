@@ -48,3 +48,6 @@ Lecture: Deleting a user in prisma
 
 Lecture: Solution: Updating a user in Prisma
     Branch - prisma-update-user-done (and -start)
+
+Lecture: Prisma Add Todo Model & fix createTodo
+    Branch - prisma-add-todo-model-done (and-start)

@@ -95,15 +95,21 @@ const resolvers = {
       // return users[userIndex];
     },
     createTodo: (parent, args, context, info) => {
-      const newTodo = {
-        id: newTodoId(),
-        name: args.name,
-        isComplete: args.isComplete,
-        userId: args.userId,
-      };
+      return context.prisma.todo.create({
+        data: {
+          name: args.name,
+          isComplete: args.isComplete,
+        },
+      });
+      // const newTodo = {
+      //   id: newTodoId(),
+      //   name: args.name,
+      //   isComplete: args.isComplete,
+      //   userId: args.userId,
+      // };
 
-      todos.push(newTodo);
-      return newTodo;
+      // todos.push(newTodo);
+      // return newTodo;
     },
     deleteTodo: (parent, args, context, info) => {
       let todo;
@@ -133,9 +139,9 @@ const resolvers = {
     },
   },
   Todo: {
-    user: (parent) => {
-      return users.find((elem) => elem.id == parent.userId);
-    },
+    // user: (parent) => {
+    //   return users.find((elem) => elem.id == parent.userId);
+    // },
   },
 };
 
