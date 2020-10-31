@@ -45,3 +45,6 @@ Lecture: Creating a user in prisma
 
 Lecture: Deleting a user in prisma
     Branch - prisma-delete-user-done (and -start)
+
+Lecture: Solution: Updating a user in Prisma
+    Branch - prisma-update-user-done (and -start)

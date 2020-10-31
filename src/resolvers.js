@@ -78,11 +78,21 @@ const resolvers = {
       // ? `Account for ${user.email} was deleted`
       // : "No user to delete";
     },
-    updateUser: (_, args) => {
-      const userIndex = users.findIndex((elem) => elem.id == args.userId);
+    updateUser: (_, args, context) => {
+      return context.prisma.user.update({
+        where: {
+          id: parseInt(args.userId),
+        },
+        data: {
+          firstName: args.input.firstName,
+          email: args.input.email,
+          age: args.input.age,
+        },
+      });
+      // const userIndex = users.findIndex((elem) => elem.id == args.userId);
 
-      users[userIndex] = { ...users[userIndex], ...args.input };
-      return users[userIndex];
+      // users[userIndex] = { ...users[userIndex], ...args.input };
+      // return users[userIndex];
     },
     createTodo: (parent, args, context, info) => {
       const newTodo = {
