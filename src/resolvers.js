@@ -106,7 +106,7 @@ const resolvers = {
       console.log("parent: ", parent);
       const todoIds = [];
 
-      usersOnTodos.foreach((elem) => {
+      usersOnTodos.forEach((elem) => {
         if (elem.userId == parent.id) {
           todoIds.push(elem.todoId);
         }
@@ -121,7 +121,17 @@ const resolvers = {
   },
   Todo: {
     users: (parent) => {
-      return users.find((elem) => elem.id == parent.userId);
+      const userIds = [];
+
+      usersOnTodos.forEach((elem) => {
+        if (elem.todoId == parent.id) {
+          userIds.push(elem.userId);
+        }
+      });
+
+      return users.filter((elem) => {
+        return userIds.includes(elem.id);
+      });
     },
   },
 };
