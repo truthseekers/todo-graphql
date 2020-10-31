@@ -112,16 +112,19 @@ const resolvers = {
       // return newTodo;
     },
     deleteTodo: (parent, args, context, info) => {
-      let todo;
-      const todoToRemove = todos.findIndex((elem) => {
-        if (elem.id == args.todoId) {
-          todo = elem;
-          return true;
-        }
-        return false;
+      return context.prisma.todo.delete({
+        where: { id: parseInt(args.todoId) },
       });
-      todo ? todos.splice(todoToRemove, 1) : "";
-      return todo;
+      // let todo;
+      // const todoToRemove = todos.findIndex((elem) => {
+      //   if (elem.id == args.todoId) {
+      //     todo = elem;
+      //     return true;
+      //   }
+      //   return false;
+      // });
+      // todo ? todos.splice(todoToRemove, 1) : "";
+      // return todo;
     },
   },
   User: {
