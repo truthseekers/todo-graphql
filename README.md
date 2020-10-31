@@ -57,3 +57,6 @@ Lecture: Query all todos with Prisma
 
 Lecture: Prisma delete todo from database
     Branch - prisma-delete-todo-done (and -start)
+
+Lecture: Deleting MANY todos in Prisma
+    Branch - prisma-delete-many-todos-done (and -start)

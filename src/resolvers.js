@@ -126,6 +126,18 @@ const resolvers = {
       // todo ? todos.splice(todoToRemove, 1) : "";
       // return todo;
     },
+    deleteTodos: (parent, args, context, info) => {
+      let newIds = args.todoIds.map((id) => {
+        return parseInt(id);
+      });
+      return context.prisma.todo.deleteMany({
+        where: {
+          id: {
+            in: newIds,
+          },
+        },
+      });
+    },
   },
   User: {
     id: (parent) => parent.id,
