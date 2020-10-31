@@ -10,12 +10,16 @@ const resolvers = {
   Query: {
     helloWorld: () => `Hello world! what a day!`,
     users: (parent, args, context, info) => {
-      if (args.text) {
-        return users.filter((elem) =>
-          elem.firstName.toLowerCase().includes(args.text.toLowerCase())
-        );
-      }
-      return users;
+      console.log(context);
+
+      return context.prisma.user.findMany();
+
+      // if (args.text) {
+      //   return users.filter((elem) =>
+      //     elem.firstName.toLowerCase().includes(args.text.toLowerCase())
+      //   );
+      // }
+      // return users;
     },
     user: (parent, args, context, info) => {
       console.log(args);
