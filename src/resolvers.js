@@ -35,22 +35,30 @@ const resolvers = {
   },
   Mutation: {
     createUser: (parent, args, context, info) => {
-      const userAlreadyExists = users.some((elem) => {
-        return elem.email == args.email;
-      });
-
-      if (userAlreadyExists) {
-        throw new Error("User already exists");
-      } else {
-        const newUser = {
-          id: newUserId(),
+      return context.prisma.user.create({
+        data: {
           firstName: args.firstName,
           email: args.email,
           age: args.age,
-        };
-        users.push(newUser);
-        return newUser;
-      }
+        },
+      });
+
+      // const userAlreadyExists = users.some((elem) => {
+      //   return elem.email == args.email;
+      // });
+
+      // if (userAlreadyExists) {
+      //   throw new Error("User already exists");
+      // } else {
+      //   const newUser = {
+      //     id: newUserId(),
+      //     firstName: args.firstName,
+      //     email: args.email,
+      //     age: args.age,
+      //   };
+      //   users.push(newUser);
+      //   return newUser;
+      // }
     },
     deleteUser: (parent, args, context, info) => {
       let user;
