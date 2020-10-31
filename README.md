@@ -54,3 +54,6 @@ Lecture: Prisma Add Todo Model & fix createTodo
 
 Lecture: Query all todos with Prisma
     Branch - prisma-query-all-todos-done (and -start)
+
+Lecture: Prisma delete todo from database
+    Branch - prisma-delete-todo-done (and -start)
