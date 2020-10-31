@@ -39,3 +39,9 @@ Lecture: add and delete todos
 
 Lecture: Installing Prisma & findMany users
     Branch - prisma-setup-done (and -start)
+
+Lecture: Creating a user in prisma
+    Branch - prisma-create-user-done (and -start)
+
+Lecture: Deleting a user in prisma
+    Branch - prisma-delete-user-done (and -start)

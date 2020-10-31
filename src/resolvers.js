@@ -61,16 +61,20 @@ const resolvers = {
       // }
     },
     deleteUser: (parent, args, context, info) => {
-      let user;
-      const userToRemove = users.findIndex((elem) => {
-        if (elem.id == args.userId) {
-          user = elem;
-          return true;
-        }
-        return false; // passes test so stays in array.
+      return context.prisma.user.delete({
+        where: { id: parseInt(args.userId) },
       });
-      user ? users.splice(userToRemove, 1) : "";
-      return user;
+
+      // let user;
+      // const userToRemove = users.findIndex((elem) => {
+      //   if (elem.id == args.userId) {
+      //     user = elem;
+      //     return true;
+      //   }
+      //   return false; // passes test so stays in array.
+      // });
+      // user ? users.splice(userToRemove, 1) : "";
+      // return user;
       // ? `Account for ${user.email} was deleted`
       // : "No user to delete";
     },
