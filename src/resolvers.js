@@ -99,6 +99,7 @@ const resolvers = {
         data: {
           name: args.name,
           isComplete: args.isComplete,
+          user: { connect: { id: parseInt(args.userId) } },
         },
       });
       // const newTodo = {
@@ -174,12 +175,20 @@ const resolvers = {
     age: (parent) => {
       return parent.age;
     },
-    todos: (parent) => {
-      console.log("parent: ", parent);
-      return todos.filter((elem) => elem.userId == parent.id);
+    todos: (parent, args, context) => {
+      return context.prisma.todo.findMany({
+        where: { userId: parent.id },
+      });
+      // console.log("parent: ", parent);
+      // return todos.filter((elem) => elem.userId == parent.id);
     },
   },
   Todo: {
+    user: (parent, _, context) => {
+      return context.prisma.user.findOne({
+        where: { id: parent.userId },
+      });
+    },
     // user: (parent) => {
     //   return users.find((elem) => elem.id == parent.userId);
     // },
