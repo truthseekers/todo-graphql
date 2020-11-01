@@ -60,3 +60,6 @@ Lecture: Prisma delete todo from database
 
 Lecture: Deleting MANY todos in Prisma
     Branch - prisma-delete-many-todos-done (and -start)
+
+Lecture: Update Single Todo & reset many todos
+    Branch - prisma-update-single-many-todos-done (and -start)

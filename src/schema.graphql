@@ -11,7 +11,9 @@ type Mutation {
   updateUser(userId: ID!, input: UserInput!): User
   createTodo(name: String!, isComplete: Boolean!): Todo
   deleteTodo(todoId: ID!): Todo
+  updateTodo(todoId: ID!, name: String, isComplete: Boolean): Todo
   deleteTodos(todoIds: [ID!]!): BatchPayload!
+  resetTodos(todoIds: [ID!]!): BatchPayload!
 }
 
 type BatchPayload {

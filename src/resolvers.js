@@ -8,7 +8,7 @@ const { todos } = require("./data/todos");
 
 const resolvers = {
   Query: {
-    helloWorld: () => `Hello world! what a day!`,
+    helloWorld: () => `Hello world wahaaaaa! what a day!`,
     users: (parent, args, context, info) => {
       console.log(context);
 
@@ -125,6 +125,32 @@ const resolvers = {
       // });
       // todo ? todos.splice(todoToRemove, 1) : "";
       // return todo;
+    },
+    updateTodo: (_, args, context) => {
+      return context.prisma.todo.update({
+        where: {
+          id: parseInt(args.todoId),
+        },
+        data: {
+          name: args.name,
+          isComplete: args.isComplete,
+        },
+      });
+    },
+    resetTodos: (parent, args, context, info) => {
+      let todosToReset = args.todoIds.map((id) => {
+        return parseInt(id);
+      });
+      return context.prisma.todo.updateMany({
+        where: {
+          id: {
+            in: todosToReset,
+          },
+        },
+        data: {
+          isComplete: false,
+        },
+      });
     },
     deleteTodos: (parent, args, context, info) => {
       let newIds = args.todoIds.map((id) => {
