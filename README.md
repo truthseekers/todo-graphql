@@ -63,3 +63,6 @@ Lecture: Deleting MANY todos in Prisma
 
 Lecture: Update Single Todo & reset many todos
     Branch - prisma-update-single-many-todos-done (and -start)
+
+Lecture: Prisma one to many relationships
+    Branch - prisma-one-to-many-done (and -start)
