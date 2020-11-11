@@ -69,3 +69,6 @@ Lecture: Prisma one to many relationships
 
 Lecture: Find single user and cleanup
     Branch - find-single-user-done (and -start)
+
+Lecture: Cascading Delete temporary hack
+    Branch - tmp-cascade-delete-done (and -start)
