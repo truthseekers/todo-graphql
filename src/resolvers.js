@@ -25,7 +25,11 @@ const resolvers = {
         },
       });
     },
-    deleteUser: (parent, args, context, info) => {
+    deleteUser: async (parent, args, context, info) => {
+      await context.prisma.todo.deleteMany({
+        where: { userId: parseInt(args.userId) },
+      });
+
       return context.prisma.user.delete({
         where: { id: parseInt(args.userId) },
       });
