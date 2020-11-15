@@ -1,3 +1,5 @@
+const bcrypt = require("bcryptjs");
+
 const resolvers = {
   Query: {
     helloWorld: () => `Hello world wahaaaaa! what a day!`,
@@ -16,12 +18,17 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: (parent, args, context, info) => {
+    signup: async (parent, args, context, info) => {
+      const password = await bcrypt.hash(args.password, 10);
+
+      console.log(password);
+
       return context.prisma.user.create({
         data: {
           firstName: args.firstName,
           email: args.email,
           age: args.age,
+          password,
         },
       });
     },

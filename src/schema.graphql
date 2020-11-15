@@ -6,7 +6,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(firstName: String!, email: String!, age: Int): User
+  signup(firstName: String!, email: String!, password: String!, age: Int): User
   deleteUser(userId: ID!): User
   updateUser(userId: ID!, input: UserInput!): User
   createTodo(name: String!, isComplete: Boolean!, userId: ID!): Todo

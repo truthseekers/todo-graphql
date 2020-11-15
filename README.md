@@ -72,3 +72,6 @@ Lecture: Find single user and cleanup
 
 Lecture: Cascading Delete temporary hack
     Branch - tmp-cascade-delete-done (and -start)
+
+Lecture: Auth signup
+    Branch - auth-signup-done (and -start)
