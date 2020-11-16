@@ -7,6 +7,7 @@ const typeDefs = require("./typedefs");
 const express = require("express");
 const passport = require("passport");
 const { GraphQLLocalStrategy, buildContext } = require("graphql-passport");
+const bcrypt = require("bcryptjs");
 
 const PORT = 4000;
 
@@ -20,6 +21,17 @@ passport.use(
       },
     });
     console.log("matchingUser: ", matchingUser);
+
+    let error = matchingUser ? "" : new Error("User not found!");
+
+    if (matchingUser) {
+      const valid = bcrypt.compare(password, matchingUser.password);
+
+      error = valid ? "" : new Error("Invalid password");
+    }
+
+    console.log("Login three");
+    done(error, matchingUser);
   })
 );
 

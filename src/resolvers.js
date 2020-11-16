@@ -32,13 +32,15 @@ const resolvers = {
         },
       });
     },
-    login: (parent, { email, password }, context, info) => {
+    login: async (parent, { email, password }, context, info) => {
       console.log("login one");
 
-      const { user } = context.authenticate("graphql-local", {
+      const { user } = await context.authenticate("graphql-local", {
         email,
         password,
       });
+
+      console.log("in resolver: ", user);
     },
     deleteUser: async (parent, args, context, info) => {
       await context.prisma.todo.deleteMany({
