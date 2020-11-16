@@ -81,3 +81,6 @@ Lecture: graphQL-yoga to apollo-server-express
 
 Lecture: Login authentication with Passport
     Branch - passport-authenticate-done (and -start)
+
+Lecture: User and password validation
+    Branch - validate-user-pw-done (and -start)
