@@ -76,5 +76,8 @@ Lecture: Cascading Delete temporary hack
 Lecture: Signing up a User
     Branch - auth-signup-done (and -start)
 
-graphQL-yoga to apollo-server-express
+Lecture: graphQL-yoga to apollo-server-express
     Branch - auth-apollo-server-done (and -start)
+
+Lecture: Login authentication with Passport
+    Branch - passport-authenticate-done (and -start)
