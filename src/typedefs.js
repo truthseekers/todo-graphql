@@ -15,6 +15,7 @@ module.exports = gql`
       password: String!
       age: Int
     ): User
+    login(email: String!, password: String!): User
     deleteUser(userId: ID!): User
     updateUser(userId: ID!, input: UserInput!): User
     createTodo(name: String!, isComplete: Boolean!, userId: ID!): Todo

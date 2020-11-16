@@ -13,7 +13,9 @@
     "@prisma/client": "^2.10.1",
     "apollo-server-express": "^2.19.0",
     "bcryptjs": "^2.4.3",
-    "graphql-yoga": "^1.18.3"
+    "graphql-passport": "^0.6.3",
+    "graphql-yoga": "^1.18.3",
+    "passport": "^0.4.1"
   },
   "devDependencies": {
     "@prisma/cli": "^2.10.1"
