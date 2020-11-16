@@ -73,5 +73,8 @@ Lecture: Find single user and cleanup
 Lecture: Cascading Delete temporary hack
     Branch - tmp-cascade-delete-done (and -start)
 
-Lecture: Auth signup
+Lecture: Signing up a User
     Branch - auth-signup-done (and -start)
+
+graphQL-yoga to apollo-server-express
+    Branch - auth-apollo-server-done (and -start)
