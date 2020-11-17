@@ -84,3 +84,6 @@ Lecture: Login authentication with Passport
 
 Lecture: User and password validation
     Branch - validate-user-pw-done (and -start)
+
+Lecture: Serialize User and Session Setup
+    Branch - complete-login-done (and -start)   (Sorry, inaccurate branch name login is not complete yet)

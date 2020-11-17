@@ -41,6 +41,8 @@ const resolvers = {
       });
 
       console.log("in resolver: ", user);
+
+      context.login(user);
     },
     deleteUser: async (parent, args, context, info) => {
       await context.prisma.todo.deleteMany({

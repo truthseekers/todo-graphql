@@ -8,8 +8,15 @@ const express = require("express");
 const passport = require("passport");
 const { GraphQLLocalStrategy, buildContext } = require("graphql-passport");
 const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const { v4: uuidv4 } = require("uuid");
+const SESSION_SECRET = "24jl234haosdih00v8e";
 
 const PORT = 4000;
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
 passport.use(
   new GraphQLLocalStrategy(async (email, password, done) => {
@@ -36,6 +43,18 @@ passport.use(
 );
 
 const app = express();
+
+app.use(
+  session({
+    genid: (req) => uuidv4(),
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 const server = new ApolloServer({
   typeDefs,
