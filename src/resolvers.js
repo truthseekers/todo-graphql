@@ -28,7 +28,7 @@ const resolvers = {
 
       console.log(password);
 
-      return context.prisma.user.create({
+      await context.prisma.user.create({
         data: {
           firstName: args.firstName,
           email: args.email,
@@ -36,6 +36,15 @@ const resolvers = {
           password,
         },
       });
+
+      const { user } = await context.authenticate("graphql-local", {
+        email: args.email,
+        password: args.password,
+      });
+
+      context.login(user);
+
+      return user;
     },
     login: async (parent, { email, password }, context, info) => {
       console.log("login one");

@@ -91,5 +91,8 @@ Lecture: Serialize User and Session Setup
 Lecture: Deserialize user and me query
     Branch - deserialize-user-done (and -start)
 
-Lecture: Logout User
+Lecture: Logout User Solution
     Branch - logout-user-done (and -start)
+
+Lecture: Login After Signup Solution
+    Branch - login-after-signup-done  (and -start)
