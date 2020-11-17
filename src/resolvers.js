@@ -51,6 +51,10 @@ const resolvers = {
 
       return user;
     },
+    logout: (parent, args, context, info) => {
+      console.log(context);
+      context.logout();
+    },
     deleteUser: async (parent, args, context, info) => {
       await context.prisma.todo.deleteMany({
         where: { userId: parseInt(args.userId) },
