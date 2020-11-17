@@ -18,6 +18,16 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+passport.deserializeUser((id, done) => {
+  const user = prisma.user.findOne({
+    where: {
+      id,
+    },
+  });
+
+  done(null, user);
+});
+
 passport.use(
   new GraphQLLocalStrategy(async (email, password, done) => {
     console.log("Login two");

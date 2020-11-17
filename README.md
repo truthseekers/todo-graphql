@@ -87,3 +87,6 @@ Lecture: User and password validation
 
 Lecture: Serialize User and Session Setup
     Branch - complete-login-done (and -start)   (Sorry, inaccurate branch name login is not complete yet)
+
+Lecture: Deserialize user and me query
+    Branch - deserialize-user-done (and -start)

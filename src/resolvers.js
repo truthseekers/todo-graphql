@@ -16,6 +16,11 @@ const resolvers = {
     todos: (parent, args, context, info) => {
       return context.prisma.todo.findMany();
     },
+    me: (parent, args, context, info) => {
+      if (context.getUser()) {
+        return context.getUser();
+      }
+    },
   },
   Mutation: {
     signup: async (parent, args, context, info) => {
@@ -43,6 +48,8 @@ const resolvers = {
       console.log("in resolver: ", user);
 
       context.login(user);
+
+      return user;
     },
     deleteUser: async (parent, args, context, info) => {
       await context.prisma.todo.deleteMany({

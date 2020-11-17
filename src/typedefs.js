@@ -6,6 +6,7 @@ module.exports = gql`
     users(text: String): [User!]!
     user(userId: ID!): User!
     todos: [Todo!]!
+    me: User
   }
 
   type Mutation {
