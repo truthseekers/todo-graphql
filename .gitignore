@@ -1,2 +1,7 @@
-node_modules/
-prisma/dev.db
+client/node_modules/
+client/build/
+
+server/node_modules/
+
+
+server/prisma/dev.db
