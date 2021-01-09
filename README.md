@@ -104,3 +104,6 @@ Lecture: Refactor Resolvers
 
 Lecture: Setup React
     Branch - setup-react-done (and -start)
+
+Lecture: setup react header
+    Branch - setup-react-header-done (and -start)
