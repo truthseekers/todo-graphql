@@ -96,3 +96,6 @@ Lecture: Logout User Solution
 
 Lecture: Login After Signup Solution
     Branch - login-after-signup-done  (and -start)
+
+Lecture: Refactor Resolvers
+    Branch - refactor-resolvers-done (and -start)
