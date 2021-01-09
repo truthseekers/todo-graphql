@@ -99,3 +99,8 @@ Lecture: Login After Signup Solution
 
 Lecture: Refactor Resolvers
     Branch - refactor-resolvers-done (and -start)
+
+------------------ React -------
+
+Lecture: Setup React
+    Branch - setup-react-done (and -start)
