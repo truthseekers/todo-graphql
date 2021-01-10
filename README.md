@@ -113,3 +113,8 @@ Lecture: React Routing
 
 Lecture: UI and Routing
     Branch - ui-and-routing-done (and -start)
+
+------------- React & GraphQL ---------
+
+Lecture: First GraphQL Query in React
+    Branch - first-query-done (and -start)
