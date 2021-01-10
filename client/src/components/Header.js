@@ -3,11 +3,13 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useHistory, Link } from "react-router-dom";
+import { useHeaderStyles } from "../styles/styles";
 
 function Header() {
   let history = useHistory();
   const currentUser = { firstName: "Bobby" };
   // const currentUser = false;
+  const classes = useHeaderStyles();
 
   return (
     <div>
@@ -18,7 +20,9 @@ function Header() {
             <Fragment>
               <MenuItem>Logout</MenuItem>
               <MenuItem>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link className={classes.link} to="/dashboard">
+                  Dashboard
+                </Link>
               </MenuItem>
               <span>Welcome {currentUser.firstName}</span>
             </Fragment>
