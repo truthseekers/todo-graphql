@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <div>
-      <AppBar>
+      <AppBar position="sticky">
         <Toolbar>
           <MenuItem>Home</MenuItem>
           {currentUser ? (
