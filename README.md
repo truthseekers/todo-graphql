@@ -118,3 +118,9 @@ Lecture: UI and Routing
 
 Lecture: First GraphQL Query in React
     Branch - first-query-done (and -start)
+
+Lecture: Display Todos
+    Branch - display-todos-done (and -start)
+
+Lecture: update todos in React
+    Branch - update-todos-react-done (and -start)
