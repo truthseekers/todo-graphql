@@ -28,7 +28,20 @@ const NEW_TODO = gql`
 function Dashboard() {
   const { data, loading, error } = useQuery(TODOS_QUERY, {});
   const [dashInput, setDashInput] = useState("");
-  const [createTodo] = useMutation(NEW_TODO);
+  const [createTodo] = useMutation(NEW_TODO, {
+    update(cache, { data: { createTodo } }) {
+      const { todos } = cache.readQuery({
+        query: TODOS_QUERY,
+      });
+
+      cache.writeQuery({
+        query: TODOS_QUERY,
+        data: {
+          todos: [createTodo, ...todos],
+        },
+      });
+    },
+  });
 
   if (loading) {
     return <div>Loading...</div>;
@@ -59,10 +72,10 @@ function Dashboard() {
           variant="outlined"
           margin="normal"
         />
+        <Button type="submit" variant="contained" color="primary">
+          Add Todo
+        </Button>
       </form>
-      <Button type="submit" variant="contained" color="primary">
-        Add Todo
-      </Button>
       <Todos todoItems={data.todos} />
     </div>
   );
