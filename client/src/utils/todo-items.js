@@ -1,5 +1,5 @@
-import { useMutation } from "@apollo/client";
-import { NEW_TODO } from "../graphql/mutations";
+import { useMutation, useQuery } from "@apollo/client";
+import { NEW_TODO, UPDATE_TODO_ITEM } from "../graphql/mutations";
 import { TODOS_QUERY } from "../graphql/queries";
 
 function useCreateTodoItem() {
@@ -20,4 +20,14 @@ function useCreateTodoItem() {
   return { createTodo };
 }
 
-export { useCreateTodoItem };
+function useUpdateTodoItem() {
+  const [updateTodo] = useMutation(UPDATE_TODO_ITEM);
+  return { updateTodo };
+}
+
+function useTodoItems() {
+  const { data, loading, error } = useQuery(TODOS_QUERY, {});
+  return { data, loading, error };
+}
+
+export { useCreateTodoItem, useUpdateTodoItem, useTodoItems };

@@ -11,4 +11,14 @@ const NEW_TODO = gql`
   }
 `;
 
-export { NEW_TODO };
+const UPDATE_TODO_ITEM = gql`
+  mutation updateTodo($todo: ID!, $isComplete: Boolean!, $name: String!) {
+    updateTodo(todoId: $todo, isComplete: $isComplete, name: $name) {
+      id
+      isComplete
+      name
+    }
+  }
+`;
+
+export { NEW_TODO, UPDATE_TODO_ITEM };

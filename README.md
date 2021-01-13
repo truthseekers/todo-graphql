@@ -130,3 +130,6 @@ Lecture: Add New Todos in React UI
 
 Lecture: Extract mutation to hooks
     Branch - extract-to-hooks-done (and -start)
+
+Lecture: Extract queries and mutations challenge and solution
+    Branch - extract-usequery-done
