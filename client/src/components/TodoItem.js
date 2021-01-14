@@ -1,7 +1,10 @@
-import { useUpdateTodoItem } from "../utils/todo-items";
+import { useUpdateTodoItem, useDeleteTodoItem } from "../utils/todo-items";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 function TodoItem(props) {
   const { updateTodo } = useUpdateTodoItem();
+  const { deleteTodo } = useDeleteTodoItem();
+
   const handleChange = () => {
     updateTodo({
       variables: {
@@ -9,6 +12,11 @@ function TodoItem(props) {
         isComplete: !props.completed,
         name: props.task,
       },
+    });
+  };
+  const deleteTodoItem = () => {
+    deleteTodo({
+      variables: { todo: props.id },
     });
   };
 
@@ -22,6 +30,9 @@ function TodoItem(props) {
           checked={props.completed}
         />
         {props.task}
+        <span>
+          - <DeleteIcon onClick={deleteTodoItem} />
+        </span>
       </li>
     </div>
   );

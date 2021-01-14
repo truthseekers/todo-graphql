@@ -1,5 +1,9 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { NEW_TODO, UPDATE_TODO_ITEM } from "../graphql/mutations";
+import {
+  NEW_TODO,
+  UPDATE_TODO_ITEM,
+  DELETE_TODO_ITEM,
+} from "../graphql/mutations";
 import { TODOS_QUERY } from "../graphql/queries";
 
 function useCreateTodoItem() {
@@ -30,4 +34,34 @@ function useTodoItems() {
   return { data, loading, error };
 }
 
-export { useCreateTodoItem, useUpdateTodoItem, useTodoItems };
+function useDeleteTodoItem() {
+  const [deleteTodo] = useMutation(DELETE_TODO_ITEM, {
+    update(cache, { data: { deleteTodo } }) {
+      console.log("deletetodo: ", deleteTodo);
+      const todos = cache.readQuery({
+        query: TODOS_QUERY,
+      });
+
+      let updatedListTodos = todos.todos.filter((elem) => {
+        if (elem.id !== deleteTodo.id) {
+          return elem;
+        }
+      });
+
+      cache.writeQuery({
+        query: TODOS_QUERY,
+        data: {
+          todos: updatedListTodos,
+        },
+      });
+    },
+  });
+  return { deleteTodo };
+}
+
+export {
+  useCreateTodoItem,
+  useUpdateTodoItem,
+  useTodoItems,
+  useDeleteTodoItem,
+};

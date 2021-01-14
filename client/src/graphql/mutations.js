@@ -21,4 +21,13 @@ const UPDATE_TODO_ITEM = gql`
   }
 `;
 
-export { NEW_TODO, UPDATE_TODO_ITEM };
+const DELETE_TODO_ITEM = gql`
+  mutation deleteTodoItem($todo: ID!) {
+    deleteTodo(todoId: $todo) {
+      id
+      name
+    }
+  }
+`;
+
+export { NEW_TODO, UPDATE_TODO_ITEM, DELETE_TODO_ITEM };

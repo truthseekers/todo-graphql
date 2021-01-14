@@ -133,3 +133,6 @@ Lecture: Extract mutation to hooks
 
 Lecture: Extract queries and mutations challenge and solution
     Branch - extract-usequery-done
+
+Lecture: Solution: Delete todos in UI
+    Branch - react-delete-todo-done (and -start)
