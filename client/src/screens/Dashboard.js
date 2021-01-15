@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Todos from "../components/Todos";
 import { useCreateTodoItem, useTodoItems } from "../utils/todo-items";
+import Container from "@material-ui/core/Container";
+import Box from "@material-ui/core/Box";
 
 function Dashboard() {
   const [dashInput, setDashInput] = useState("");
@@ -32,9 +34,10 @@ function Dashboard() {
   console.log("data", data);
 
   return (
-    <div>
+    <Container maxWidth="sm">
       <form onSubmit={handleSubmit}>
         <TextField
+          fullWidth
           id="dashInput"
           label="add a todo"
           value={dashInput}
@@ -42,12 +45,14 @@ function Dashboard() {
           variant="outlined"
           margin="normal"
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button fullWidth type="submit" variant="contained" color="primary">
           Add Todo
         </Button>
       </form>
-      <Todos todoItems={data.todos} />
-    </div>
+      <Box align="center">
+        <Todos todoItems={data.todos} />
+      </Box>
+    </Container>
   );
 }
 

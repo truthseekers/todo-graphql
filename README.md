@@ -136,3 +136,6 @@ Lecture: Extract queries and mutations challenge and solution
 
 Lecture: Solution: Delete todos in UI
     Branch - react-delete-todo-done (and -start)
+
+Lecture: Solution: Update todo text
+    Branch - react-edit-todo-done (and -start)
