@@ -139,3 +139,7 @@ Lecture: Solution: Delete todos in UI
 
 Lecture: Solution: Update todo text
     Branch - react-edit-todo-done (and -start)
+
+Lecture: Create the Login Page
+    Note - ** I accidentally committed before switching branches, same as above
+    Branch - react-edit-todo-done
