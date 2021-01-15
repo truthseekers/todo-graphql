@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
 import { useLoginStyles } from "../styles/loginStyles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import { Typography } from "@material-ui/core";
