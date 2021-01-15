@@ -7,8 +7,8 @@ import UnauthenticatedApp from "./screens/UnauthenticatedApp";
 import AuthenticatedApp from "./AuthenticatedApp";
 
 function App() {
-  const currentUser = { firstName: "Bobby" };
-  // const currentUser = false;
+  // const currentUser = { firstName: "Bobby" };
+  const currentUser = false;
   return (
     <div>
       <Header />

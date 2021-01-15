@@ -7,8 +7,8 @@ import { useHeaderStyles } from "../styles/styles";
 
 function Header() {
   let history = useHistory();
-  const currentUser = { firstName: "Bobby" };
-  // const currentUser = false;
+  // const currentUser = { firstName: "Bobby" };
+  const currentUser = false;
   const classes = useHeaderStyles();
 
   return (
