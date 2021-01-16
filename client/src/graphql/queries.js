@@ -10,4 +10,13 @@ const TODOS_QUERY = gql`
   }
 `;
 
-export { TODOS_QUERY };
+const ME = gql`
+  query {
+    me {
+      id
+      email
+    }
+  }
+`;
+
+export { TODOS_QUERY, ME };

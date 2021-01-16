@@ -5,10 +5,13 @@ import Login from "./screens/Login";
 import Signup from "./screens/Signup";
 import UnauthenticatedApp from "./screens/UnauthenticatedApp";
 import AuthenticatedApp from "./AuthenticatedApp";
+import { useCurrentUser } from "./utils/hooks";
 
 function App() {
   // const currentUser = { firstName: "Bobby" };
-  const currentUser = false;
+  // const currentUser = false;
+  const { currentUser } = useCurrentUser();
+  console.log("currentUser from App.js: ", currentUser);
   return (
     <div>
       <Header />

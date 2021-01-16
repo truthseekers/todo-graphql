@@ -1,6 +1,7 @@
 import { LOGIN_MUTATION } from "../graphql/mutations";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
+import { ME } from "../graphql/queries";
 
 function useLoginMutation() {
   let history = useHistory();
@@ -16,4 +17,22 @@ function useLoginMutation() {
   return { doLogin, error, loading };
 }
 
-export { useLoginMutation };
+function useCurrentUser() {
+  const meQuery = useQuery(ME);
+
+  if (meQuery.loading) {
+    console.log("loading...");
+    return { currentUser: "" };
+  }
+
+  if (meQuery.data?.me) {
+    console.log("meQuery.data ", meQuery);
+    return { currentUser: meQuery.data.me, status: "complete" };
+  } else {
+    console.log("meQuery no data? ", meQuery);
+
+    return { currentUser: "", status: "complete" };
+  }
+}
+
+export { useLoginMutation, useCurrentUser };
