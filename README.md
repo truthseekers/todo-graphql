@@ -146,3 +146,9 @@ Lecture: Create the Login Page
 
 Lecture: Login Mutation in React
     Branch - react-login-done (and -start)
+
+Lecture: Cors and Cookies for Login
+    Branch - cors-done  (and -start)
+
+Lecture: Get current User React
+    Branch - getcurrentuser-react-done (and -start)
