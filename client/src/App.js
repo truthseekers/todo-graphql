@@ -12,6 +12,7 @@ function App() {
   // const currentUser = false;
   const { currentUser } = useCurrentUser();
   console.log("currentUser from App.js: ", currentUser);
+
   return (
     <div>
       <Header />

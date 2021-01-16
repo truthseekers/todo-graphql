@@ -27,7 +27,10 @@ function useCurrentUser() {
 
   if (meQuery.data?.me) {
     console.log("meQuery.data ", meQuery);
-    return { currentUser: meQuery.data.me, status: "complete" };
+    return {
+      currentUser: meQuery.data.me,
+      status: "complete",
+    };
   } else {
     console.log("meQuery no data? ", meQuery);
 
