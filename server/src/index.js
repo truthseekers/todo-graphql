@@ -66,6 +66,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+const corsOptions = { credentials: true, origin: "http://localhost:3000" };
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -74,7 +76,7 @@ const server = new ApolloServer({
   },
 });
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, cors: corsOptions });
 
 app.listen({ port: PORT }, () => {
   console.log(`Server ready at http://localhost:${PORT}`);
