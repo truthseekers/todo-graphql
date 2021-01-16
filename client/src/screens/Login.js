@@ -7,14 +7,17 @@ import Container from "@material-ui/core/Container";
 import { Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { useLoginMutation } from "../utils/hooks";
 
 export default function Login() {
   const classes = useLoginStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { doLogin, error } = useLoginMutation();
 
   const handleSubmit = (e) => {
-    //
+    e.preventDefault();
+    doLogin({ variables: { email, password } });
   };
 
   return (

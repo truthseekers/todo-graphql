@@ -30,4 +30,14 @@ const DELETE_TODO_ITEM = gql`
   }
 `;
 
-export { NEW_TODO, UPDATE_TODO_ITEM, DELETE_TODO_ITEM };
+const LOGIN_MUTATION = gql`
+  mutation loginMutation($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      id
+      firstName
+      email
+    }
+  }
+`;
+
+export { NEW_TODO, UPDATE_TODO_ITEM, DELETE_TODO_ITEM, LOGIN_MUTATION };
