@@ -152,3 +152,6 @@ Lecture: Cors and Cookies for Login
 
 Lecture: Get current User React
     Branch - getcurrentuser-react-done (and -start)
+
+Lecture: Auth Context in React
+    Branch - auth-context-done (and -start)
