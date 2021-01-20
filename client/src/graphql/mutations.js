@@ -40,4 +40,16 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-export { NEW_TODO, UPDATE_TODO_ITEM, DELETE_TODO_ITEM, LOGIN_MUTATION };
+const LOGOUT_MUTATION = gql`
+  mutation {
+    logout
+  }
+`;
+
+export {
+  NEW_TODO,
+  UPDATE_TODO_ITEM,
+  DELETE_TODO_ITEM,
+  LOGIN_MUTATION,
+  LOGOUT_MUTATION,
+};

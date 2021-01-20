@@ -1,4 +1,4 @@
-import { LOGIN_MUTATION } from "../graphql/mutations";
+import { LOGIN_MUTATION, LOGOUT_MUTATION } from "../graphql/mutations";
 import { useMutation, useQuery } from "@apollo/client";
 import { useHistory } from "react-router-dom";
 import { ME } from "../graphql/queries";
@@ -8,6 +8,7 @@ function useLoginMutation() {
   const [doLogin, { error, loading, client }] = useMutation(LOGIN_MUTATION, {
     onCompleted() {
       console.log("onCompleted!");
+      client.resetStore();
       history.push("/dashboard");
     },
     onError() {
@@ -38,4 +39,16 @@ function useCurrentUser() {
   }
 }
 
-export { useLoginMutation, useCurrentUser };
+function useLogout() {
+  let history = useHistory();
+  const [doLogout, { client }] = useMutation(LOGOUT_MUTATION, {
+    onCompleted() {
+      client.resetStore();
+      history.push("/");
+      window.location.assign(window.location);
+    },
+  });
+  return { doLogout };
+}
+
+export { useLoginMutation, useCurrentUser, useLogout };

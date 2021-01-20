@@ -152,3 +152,6 @@ Lecture: Cors and Cookies for Login
 
 Lecture: Get current User React
     Branch - getcurrentuser-react-done (and -start)
+
+Lecture: Log out and Logged in State
+    Branch - logout-user-react-done (and -start)
