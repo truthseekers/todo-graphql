@@ -8,6 +8,7 @@ import { Typography } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useLoginMutation } from "../utils/hooks";
+import Alert from "@material-ui/lab/Alert";
 
 export default function Login() {
   const classes = useLoginStyles();
@@ -65,6 +66,7 @@ export default function Login() {
           </Button>
           <Link to="/signup">{"Don't have an account? Sign Up"}</Link>
         </form>
+        {error && <Alert severity="error">{error}</Alert>}
       </div>
     </Container>
   );

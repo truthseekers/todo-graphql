@@ -11,11 +11,11 @@ function useLoginMutation() {
       client.resetStore();
       history.push("/dashboard");
     },
-    onError() {
-      console.log("error");
+    onError(error) {
+      console.log("error: ", error);
     },
   });
-  return { doLogin, error, loading };
+  return { doLogin, error: error?.message, loading };
 }
 
 function useCurrentUser() {

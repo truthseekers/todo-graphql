@@ -155,3 +155,6 @@ Lecture: Get current User React
 
 Lecture: Log out and Logged in State
     Branch - logout-user-react-done (and -start)
+
+Lecture: Login Error Handling
+    Branch - login-error-done (and -start)
