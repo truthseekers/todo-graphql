@@ -7,7 +7,7 @@ import {
 import { TODOS_QUERY } from "../graphql/queries";
 
 function useCreateTodoItem() {
-  const [createTodo] = useMutation(NEW_TODO, {
+  const [createTodo, {error}] = useMutation(NEW_TODO, {
     update(cache, { data: { createTodo } }) {
       const { todos } = cache.readQuery({
         query: TODOS_QUERY,
@@ -20,8 +20,11 @@ function useCreateTodoItem() {
         },
       });
     },
+    onError(error) {
+
+    }
   });
-  return { createTodo };
+  return { createTodo, error: error?.message };
 }
 
 function useUpdateTodoItem() {

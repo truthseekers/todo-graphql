@@ -5,10 +5,11 @@ import Todos from "../components/Todos";
 import { useCreateTodoItem, useTodoItems } from "../utils/todo-items";
 import Container from "@material-ui/core/Container";
 import Box from "@material-ui/core/Box";
+import Alert from "@material-ui/lab/Alert";
 
 function Dashboard() {
   const [dashInput, setDashInput] = useState("");
-  const { createTodo } = useCreateTodoItem();
+  const { createTodo, error: createTodoError  } = useCreateTodoItem();
   const { data, loading, error } = useTodoItems();
 
   if (loading) {
@@ -49,6 +50,7 @@ function Dashboard() {
           Add Todo
         </Button>
       </form>
+      {createTodoError && <Alert severity="error">{createTodoError}</Alert>}
       <Box align="center">
         <Todos todoItems={data.todos} />
       </Box>

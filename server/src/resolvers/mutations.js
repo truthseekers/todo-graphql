@@ -1,4 +1,6 @@
 const bcrypt = require("bcryptjs");
+const { AuthenticationError } = require("apollo-server-express");
+
 
 const Mutation = {
   signup: async (parent, args, context, info) => {
@@ -64,6 +66,14 @@ const Mutation = {
     });
   },
   createTodo: (parent, args, context, info) => {
+    if (!context.isAuthenticated()) {
+      throw new AuthenticationError("Must be logged in to do that");
+    }
+
+    if (args.name.length <= 0) {
+      throw new Error("Todo must not be blank!")
+    }
+
     return context.prisma.todo.create({
       data: {
         name: args.name,
