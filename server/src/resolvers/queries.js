@@ -1,3 +1,5 @@
+const { AuthenticationError } = require("apollo-server-express");
+
 const Query = {
   helloWorld: () => `Hello world wahaaaaa! what a day!`,
   users: (parent, args, context, info) => {
@@ -10,8 +12,16 @@ const Query = {
       where: { id: parseInt(args.userId) },
     });
   },
-  todos: (parent, args, context, info) => {
-    return context.prisma.todo.findMany();
+  todos: async (parent, args, context, info) => {
+    if (!context.isAuthenticated()) {
+      throw new AuthenticationError("Must be logged in to view todos");
+    }
+
+    const user = await context.getUser();
+
+    return context.prisma.todo.findMany({
+      where: { userId: parseInt(user.id) },
+    });
   },
   me: (parent, args, context, info) => {
     if (context.getUser()) {

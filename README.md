@@ -158,3 +158,6 @@ Lecture: Log out and Logged in State
 
 Lecture: Login Error Handling
     Branch - login-error-done (and -start)
+
+Lecture: Users todos and require Login
+    Branch - todos-auth-query-done (and -start)
