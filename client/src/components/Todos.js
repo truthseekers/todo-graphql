@@ -1,9 +1,16 @@
 import TodoItem from "./TodoItem";
+import { useTodoItems } from "../utils/todo-items";
 
 function Todos(props) {
   let todoRows = [];
-  console.log(props.todoItems);
-  props.todoItems.map((elem) => {
+
+  const { data, loading } = useTodoItems();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  data.todos.map((elem) => {
     todoRows.push(
       <TodoItem
         key={elem.id}

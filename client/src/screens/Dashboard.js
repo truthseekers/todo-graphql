@@ -9,7 +9,7 @@ import Alert from "@material-ui/lab/Alert";
 
 function Dashboard() {
   const [dashInput, setDashInput] = useState("");
-  const { createTodo, error: createTodoError  } = useCreateTodoItem();
+  const { createTodo, error: createTodoError } = useCreateTodoItem();
   const { data, loading, error } = useTodoItems();
 
   if (loading) {
@@ -52,7 +52,7 @@ function Dashboard() {
       </form>
       {createTodoError && <Alert severity="error">{createTodoError}</Alert>}
       <Box align="center">
-        <Todos todoItems={data.todos} />
+        <Todos />
       </Box>
     </Container>
   );

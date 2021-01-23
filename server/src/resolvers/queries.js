@@ -20,7 +20,12 @@ const Query = {
     const user = await context.getUser();
 
     return context.prisma.todo.findMany({
-      where: { userId: parseInt(user.id) },
+      where: {
+        AND: [
+          { userId: parseInt(user.id) },
+          { name: { contains: args.filter } },
+        ],
+      },
     });
   },
   me: (parent, args, context, info) => {
