@@ -4,7 +4,9 @@ import { useTodoItems } from "../utils/todo-items";
 function Todos(props) {
   let todoRows = [];
 
-  const { data, loading } = useTodoItems();
+  const { data, loading } = useTodoItems({
+    dashInput: props.dashInput,
+  });
 
   if (loading) {
     return <div>Loading...</div>;

@@ -1,11 +1,11 @@
 import { gql } from "@apollo/client";
 
 const TODOS_QUERY = gql`
-  query {
-    todos {
+  query todos($filter: String) {
+    todos(filter: $filter) {
       id
       name
-      isComplete
+      userId
     }
   }
 `;

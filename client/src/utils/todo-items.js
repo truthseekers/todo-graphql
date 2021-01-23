@@ -7,7 +7,7 @@ import {
 import { TODOS_QUERY } from "../graphql/queries";
 
 function useCreateTodoItem() {
-  const [createTodo, {error}] = useMutation(NEW_TODO, {
+  const [createTodo, { error }] = useMutation(NEW_TODO, {
     update(cache, { data: { createTodo } }) {
       const { todos } = cache.readQuery({
         query: TODOS_QUERY,
@@ -20,9 +20,7 @@ function useCreateTodoItem() {
         },
       });
     },
-    onError(error) {
-
-    }
+    onError(error) {},
   });
   return { createTodo, error: error?.message };
 }
@@ -32,15 +30,17 @@ function useUpdateTodoItem() {
   return { updateTodo };
 }
 
-function useTodoItems() {
-  const { data, loading, error } = useQuery(TODOS_QUERY, {});
+function useTodoItems(args) {
+  console.log("args from useTodoItems: ", args);
+  const { data, loading, error } = useQuery(TODOS_QUERY, {
+    variables: { filter: args.dashInput },
+  });
   return { data, loading, error };
 }
 
 function useDeleteTodoItem() {
   const [deleteTodo] = useMutation(DELETE_TODO_ITEM, {
     update(cache, { data: { deleteTodo } }) {
-      console.log("deletetodo: ", deleteTodo);
       const todos = cache.readQuery({
         query: TODOS_QUERY,
       });
