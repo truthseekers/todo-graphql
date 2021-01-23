@@ -166,3 +166,9 @@ Branch - require-login-createtodos-done (and -start)
 
 Lecture: Filter results in server and refactor component
 Branch - filter-todos-react-done (and -start)
+
+Lecture: Filter results in front end
+Branch - filter-todos-react-pt2-done (and -start)
+
+Lecture: Fetch policy and Cache
+Branch - filter-todos-react-pt3-done (and -start)

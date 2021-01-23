@@ -8,9 +8,11 @@ import Box from "@material-ui/core/Box";
 import Alert from "@material-ui/lab/Alert";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { useCurrentUser } from "../utils/hooks";
 
 function Dashboard() {
   const [isSearch, setIsSearch] = useState(false);
+  const { currentUser } = useCurrentUser();
   const [dashInput, setDashInput] = useState("");
   const { createTodo, error: createTodoError } = useCreateTodoItem();
 
@@ -19,7 +21,7 @@ function Dashboard() {
     createTodo({
       variables: {
         newTodo: dashInput,
-        userId: 1,
+        userId: currentUser.id,
         isComplete: false,
       },
     });

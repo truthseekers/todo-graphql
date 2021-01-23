@@ -11,10 +11,12 @@ function useCreateTodoItem() {
     update(cache, { data: { createTodo } }) {
       const { todos } = cache.readQuery({
         query: TODOS_QUERY,
+        variables: { filter: "" },
       });
 
       cache.writeQuery({
         query: TODOS_QUERY,
+        variables: { filter: "" },
         data: {
           todos: [createTodo, ...todos],
         },
@@ -31,9 +33,9 @@ function useUpdateTodoItem() {
 }
 
 function useTodoItems(args) {
-  console.log("args from useTodoItems: ", args);
   const { data, loading, error } = useQuery(TODOS_QUERY, {
     variables: { filter: args.dashInput },
+    fetchPolicy: "network-only",
   });
   return { data, loading, error };
 }
@@ -43,6 +45,7 @@ function useDeleteTodoItem() {
     update(cache, { data: { deleteTodo } }) {
       const todos = cache.readQuery({
         query: TODOS_QUERY,
+        variables: { filter: "" },
       });
 
       let updatedListTodos = todos.todos.filter((elem) => {
@@ -53,6 +56,7 @@ function useDeleteTodoItem() {
 
       cache.writeQuery({
         query: TODOS_QUERY,
+        variables: { filter: "" },
         data: {
           todos: updatedListTodos,
         },

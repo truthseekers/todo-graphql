@@ -11,7 +11,6 @@ function App() {
   // const currentUser = { firstName: "Bobby" };
   // const currentUser = false;
   const { currentUser } = useCurrentUser();
-  console.log("currentUser from App.js: ", currentUser);
 
   return (
     <div>

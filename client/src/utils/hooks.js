@@ -7,7 +7,6 @@ function useLoginMutation() {
   let history = useHistory();
   const [doLogin, { error, loading, client }] = useMutation(LOGIN_MUTATION, {
     onCompleted() {
-      console.log("onCompleted!");
       client.resetStore();
       history.push("/dashboard");
     },
@@ -22,19 +21,15 @@ function useCurrentUser() {
   const meQuery = useQuery(ME);
 
   if (meQuery.loading) {
-    console.log("loading...");
     return { currentUser: "" };
   }
 
   if (meQuery.data?.me) {
-    console.log("meQuery.data ", meQuery);
     return {
       currentUser: meQuery.data.me,
       status: "complete",
     };
   } else {
-    console.log("meQuery no data? ", meQuery);
-
     return { currentUser: "", status: "complete" };
   }
 }

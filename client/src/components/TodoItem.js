@@ -28,7 +28,6 @@ function TodoItem(props) {
   };
 
   const updateTodoItem = () => {
-    console.log("updateing. ");
     updateTodo({
       variables: {
         todo: props.id,
@@ -39,7 +38,6 @@ function TodoItem(props) {
     setIsEditing(false);
   };
 
-  console.log("props from todoItem: ", props);
   return (
     <div style={{ fontSize: "20px" }}>
       {!isEditing ? (
