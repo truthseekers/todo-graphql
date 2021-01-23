@@ -13,15 +13,6 @@ function Dashboard() {
   const [isSearch, setIsSearch] = useState(false);
   const [dashInput, setDashInput] = useState("");
   const { createTodo, error: createTodoError } = useCreateTodoItem();
-  const { data, loading, error } = useTodoItems();
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>error: {error}</div>;
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,8 +25,6 @@ function Dashboard() {
     });
     setDashInput("");
   };
-
-  console.log("data", data);
 
   return (
     <Container maxWidth="sm">
