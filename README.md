@@ -172,3 +172,6 @@ Branch - filter-todos-react-pt2-done (and -start)
 
 Lecture: Fetch policy and Cache
 Branch - filter-todos-react-pt3-done (and -start)
+
+Lecture: Filter by completed status (server)
+Branch - server-filter-status-done (and -start)
