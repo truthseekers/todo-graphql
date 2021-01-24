@@ -6,6 +6,7 @@ function Todos(props) {
 
   const { data, loading } = useTodoItems({
     dashInput: props.dashInput,
+    takeStatus: props.takeStatus,
   });
 
   if (loading) {
@@ -25,8 +26,20 @@ function Todos(props) {
 
   return (
     <div>
-      My Todos
-      {todoRows}
+      <h2>My Todos: </h2>
+      {data.todos.length === 0 ? (
+        <div>No Todos in this list!</div>
+      ) : (
+        <ul
+          style={{
+            listStyleType: "none",
+            textDecoration:
+              props.takeStatus === "complete" ? "line-through" : "",
+          }}
+        >
+          {todoRows}
+        </ul>
+      )}
     </div>
   );
 }

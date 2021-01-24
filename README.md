@@ -178,3 +178,6 @@ Branch - server-filter-status-done (and -start)
 
 Lecture: Dashboard Toggle Status
 Branch - dashboard-toggle-status-done (and -start)
+
+Lecture: Filter by completed status finished
+Branch - filter-by-completed-done (and -start)
