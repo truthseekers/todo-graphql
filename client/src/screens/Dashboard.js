@@ -9,9 +9,11 @@ import Alert from "@material-ui/lab/Alert";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import { useCurrentUser } from "../utils/hooks";
+import Radio from "@material-ui/core/Radio";
 
 function Dashboard() {
   const [isSearch, setIsSearch] = useState(false);
+  const [takeStatus, setTakeStatus] = useState("incomplete");
   const { currentUser } = useCurrentUser();
   const [dashInput, setDashInput] = useState("");
   const { createTodo, error: createTodoError } = useCreateTodoItem();
@@ -51,13 +53,37 @@ function Dashboard() {
           }
           label="Search Todos"
         />
-        <Button fullWidth type="submit" variant="contained" color="primary">
-          Add Todo
-        </Button>
+        <FormControlLabel
+          control={
+            <Radio
+              checked={takeStatus === "complete"}
+              onChange={() => setTakeStatus("complete")}
+              color="primary"
+              name="complete"
+            />
+          }
+          label="complete"
+        />
+        <FormControlLabel
+          control={
+            <Radio
+              checked={takeStatus === "incomplete"}
+              onChange={() => setTakeStatus("incomplete")}
+              color="primary"
+              name="incomplete"
+            />
+          }
+          label="Incomplete"
+        />
+        {!isSearch && (
+          <Button fullWidth type="submit" variant="contained" color="primary">
+            Add Todo
+          </Button>
+        )}
       </form>
       {createTodoError && <Alert severity="error">{createTodoError}</Alert>}
       <Box align="center">
-        <Todos dashInput={isSearch ? dashInput : ""} />
+        <Todos takeStatus={takeStatus} dashInput={isSearch ? dashInput : ""} />
       </Box>
     </Container>
   );
