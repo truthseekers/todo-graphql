@@ -19,12 +19,22 @@ const Query = {
 
     const user = await context.getUser();
 
+    let whereConditions = [
+      { userId: parseInt(user.id) },
+      { name: { contains: args.filter } },
+    ];
+
+    args.takeStatus === "complete"
+      ? whereConditions.push({ isComplete: true })
+      : null;
+
+    args.takeStatus === "incomplete"
+      ? whereConditions.push({ isComplete: false })
+      : null;
+
     return context.prisma.todo.findMany({
       where: {
-        AND: [
-          { userId: parseInt(user.id) },
-          { name: { contains: args.filter } },
-        ],
+        AND: whereConditions,
       },
     });
   },
