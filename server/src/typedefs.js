@@ -5,7 +5,7 @@ module.exports = gql`
     helloWorld: String!
     users(text: String): [User!]!
     user(userId: ID!): User!
-    todos(filter: String, takeStatus: String): [Todo!]!
+    todos(filter: String, takeStatus: String): Todos!
     me: User
   }
 
@@ -43,6 +43,11 @@ module.exports = gql`
     email: String!
     age: Int
     todos: [Todo!]!
+  }
+
+  type Todos {
+    todoItems: [Todo!]
+    count: Int!
   }
 
   type Todo {

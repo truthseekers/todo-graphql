@@ -32,11 +32,22 @@ const Query = {
       ? whereConditions.push({ isComplete: false })
       : null;
 
-    return context.prisma.todo.findMany({
+    const todos = await context.prisma.todo.findMany({
       where: {
         AND: whereConditions,
       },
     });
+
+    const count = await context.prisma.todo.count({
+      where: {
+        AND: whereConditions,
+      },
+    });
+
+    return {
+      todoItems: todos,
+      count,
+    };
   },
   me: (parent, args, context, info) => {
     if (context.getUser()) {

@@ -184,3 +184,6 @@ Branch - filter-by-completed-done (and -start)
 
 Lecture: RefetchQueries
 Branch - refetchQueries-done (and -start)
+
+Lecture: Get number of results from server
+Branch - count-from-server-done (and -start)

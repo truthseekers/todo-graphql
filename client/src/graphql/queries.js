@@ -3,10 +3,13 @@ import { gql } from "@apollo/client";
 const TODOS_QUERY = gql`
   query todos($filter: String, $takeStatus: String) {
     todos(filter: $filter, takeStatus: $takeStatus) {
-      id
-      isComplete
-      userId
-      name
+      todoItems {
+        id
+        isComplete
+        userId
+        name
+      }
+      count
     }
   }
 `;

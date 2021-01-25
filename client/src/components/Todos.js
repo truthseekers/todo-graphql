@@ -13,7 +13,7 @@ function Todos(props) {
     return <div>Loading...</div>;
   }
 
-  data.todos.map((elem) => {
+  data.todos.todoItems.map((elem) => {
     todoRows.push(
       <TodoItem
         key={elem.id}
@@ -26,7 +26,10 @@ function Todos(props) {
 
   return (
     <div>
-      <h2>My Todos: </h2>
+      <h2>
+        {props.takeStatus === "incomplete" ? "Incomplete " : "Complete "} Todos:{" "}
+        {data.todos.count}
+      </h2>
       {data.todos.length === 0 ? (
         <div>No Todos in this list!</div>
       ) : (
