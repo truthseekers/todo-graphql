@@ -9,20 +9,24 @@ import { TODOS_QUERY } from "../graphql/queries";
 function useCreateTodoItem() {
   const [createTodo, { error }] = useMutation(NEW_TODO, {
     update(cache, { data: { createTodo } }) {
-      const { todos } = cache.readQuery({
-        query: TODOS_QUERY,
-        variables: { filter: "", takeStatus: "incomplete" },
-      });
-
-      cache.writeQuery({
-        query: TODOS_QUERY,
-        variables: { filter: "", takeStatus: "incomplete" },
-        data: {
-          todos: [createTodo, ...todos],
-        },
-      });
+      // const { todos } = cache.readQuery({
+      //   query: TODOS_QUERY,
+      //   variables: { filter: "", takeStatus: "incomplete" },
+      // });
+      // cache.writeQuery({
+      //   query: TODOS_QUERY,
+      //   variables: { filter: "", takeStatus: "incomplete" },
+      //   data: {
+      //     todos: [createTodo, ...todos],
+      //   },
+      // });
     },
     onError(error) {},
+    refetchQueries: [
+      {
+        query: TODOS_QUERY,
+      },
+    ],
   });
   return { createTodo, error: error?.message };
 }
@@ -44,25 +48,29 @@ function useTodoItems(args) {
 function useDeleteTodoItem() {
   const [deleteTodo] = useMutation(DELETE_TODO_ITEM, {
     update(cache, { data: { deleteTodo } }) {
-      const todos = cache.readQuery({
-        query: TODOS_QUERY,
-        variables: { filter: "", takeStatus: "incomplete" },
-      });
-
-      let updatedListTodos = todos.todos.filter((elem) => {
-        if (elem.id !== deleteTodo.id) {
-          return elem;
-        }
-      });
-
-      cache.writeQuery({
-        query: TODOS_QUERY,
-        variables: { filter: "", takeStatus: "complete" },
-        data: {
-          todos: updatedListTodos,
-        },
-      });
+      // const todos = cache.readQuery({
+      //   query: TODOS_QUERY,
+      //   variables: { filter: "", takeStatus: "incomplete" },
+      // });
+      // let updatedListTodos = todos.todos.filter((elem) => {
+      //   if (elem.id !== deleteTodo.id) {
+      //     return elem;
+      //   }
+      // });
+      // cache.writeQuery({
+      //   query: TODOS_QUERY,
+      //   variables: { filter: "", takeStatus: "complete" },
+      //   data: {
+      //     todos: updatedListTodos,
+      //   },
+      // });
     },
+    refetchQueries: [
+      {
+        query: TODOS_QUERY,
+        // variables: { filter: "" },
+      },
+    ],
   });
   return { deleteTodo };
 }
