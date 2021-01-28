@@ -1,12 +1,15 @@
+import React from "react";
 import TodoItem from "./TodoItem";
 import { useTodoItems } from "../utils/todo-items";
+// import Pagination from "./Pagination"
 
 function Todos(props) {
   let todoRows = [];
-
+  const [skip, setSkip] = React.useState(0);
   const { data, loading } = useTodoItems({
     dashInput: props.dashInput,
     takeStatus: props.takeStatus,
+    skip,
   });
 
   if (loading) {

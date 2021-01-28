@@ -38,7 +38,12 @@ function useUpdateTodoItem() {
 
 function useTodoItems(args) {
   const { data, loading, error } = useQuery(TODOS_QUERY, {
-    variables: { filter: args.dashInput, takeStatus: args.takeStatus },
+    variables: {
+      filter: args.dashInput,
+      takeStatus: args.takeStatus,
+      skip: args.skip,
+      take: 5,
+    },
     fetchPolicy: "network-only",
   });
   console.log("todos from useTodoItems: ", data);

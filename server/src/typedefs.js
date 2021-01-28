@@ -5,7 +5,7 @@ module.exports = gql`
     helloWorld: String!
     users(text: String): [User!]!
     user(userId: ID!): User!
-    todos(filter: String, takeStatus: String): Todos!
+    todos(filter: String, takeStatus: String, skip: Int, take: Int): Todos!
     me: User
   }
 

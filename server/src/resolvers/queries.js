@@ -36,6 +36,8 @@ const Query = {
       where: {
         AND: whereConditions,
       },
+      skip: args.skip,
+      take: args.take,
     });
 
     const count = await context.prisma.todo.count({
