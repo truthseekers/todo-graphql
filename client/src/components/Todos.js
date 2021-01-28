@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import { useTodoItems } from "../utils/todo-items";
-// import Pagination from "./Pagination"
+import Pagination from "./Pagination";
 
 function Todos(props) {
   let todoRows = [];
@@ -27,6 +27,8 @@ function Todos(props) {
     );
   });
 
+  const paginate = (pageNumber) => setSkip((pageNumber - 1) * 5);
+
   return (
     <div>
       <h2>
@@ -46,6 +48,11 @@ function Todos(props) {
           {todoRows}
         </ul>
       )}
+      <Pagination
+        todosPerPage={5}
+        totalTodos={data.todos.count}
+        paginate={paginate}
+      />
     </div>
   );
 }
