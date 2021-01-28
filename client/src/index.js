@@ -10,6 +10,7 @@ import {
   createHttpLink,
   InMemoryCache,
 } from "@apollo/client";
+import { AuthProvider } from "./context/AuthContext";
 
 const httpLink = createHttpLink({
   uri: "http://localhost:4000/graphql",
@@ -25,7 +26,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ApolloProvider client={client}>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>,

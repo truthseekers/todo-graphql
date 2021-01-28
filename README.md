@@ -193,3 +193,6 @@ Branch - offset-pagination-done (and -start)
 
 Lecture: Offset Pagination Part 2
 Branch - offset-pagination-two-done (and -start)
+
+Lecture: Authentication Context Part One
+Branch - better-context-done (and -start)
