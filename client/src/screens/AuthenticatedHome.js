@@ -1,5 +1,15 @@
+import React from "react";
+import { useAuth } from "../context/AuthContext";
+
 function AuthenticatedHome() {
-  return <div>I am the homepage for authenticated users</div>;
+  const { currentUser } = useAuth();
+
+  return (
+    <div>
+      Hi {currentUser.firstName}! Learn all the things you can do with our app
+      here.
+    </div>
+  );
 }
 
 export default AuthenticatedHome;

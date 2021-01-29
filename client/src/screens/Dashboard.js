@@ -8,13 +8,13 @@ import Box from "@material-ui/core/Box";
 import Alert from "@material-ui/lab/Alert";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import { useCurrentUser } from "../utils/hooks";
+import { useAuth } from "../context/AuthContext";
 import Radio from "@material-ui/core/Radio";
 
 function Dashboard() {
   const [isSearch, setIsSearch] = useState(false);
   const [takeStatus, setTakeStatus] = useState("incomplete");
-  const { currentUser } = useCurrentUser();
+  const { currentUser } = useAuth();
   const [dashInput, setDashInput] = useState("");
   const { createTodo, error: createTodoError } = useCreateTodoItem();
 
