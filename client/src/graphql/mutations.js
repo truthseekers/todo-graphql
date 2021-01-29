@@ -46,10 +46,21 @@ const LOGOUT_MUTATION = gql`
   }
 `;
 
+const SIGNUP_MUTATION = gql`
+  mutation Signup($firstName: String!, $email: String!, $password: String!) {
+    signup(firstName: $firstName, email: $email, password: $password) {
+      firstName
+      id
+      email
+    }
+  }
+`;
+
 export {
   NEW_TODO,
   UPDATE_TODO_ITEM,
   DELETE_TODO_ITEM,
   LOGIN_MUTATION,
+  SIGNUP_MUTATION,
   LOGOUT_MUTATION,
 };

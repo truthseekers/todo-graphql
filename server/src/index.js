@@ -2,7 +2,7 @@
 const { ApolloServer } = require("apollo-server-express");
 const { resolvers } = require("./resolvers");
 const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({ errorFormat: "minimal" });
 const typeDefs = require("./typedefs");
 const express = require("express");
 const passport = require("passport");

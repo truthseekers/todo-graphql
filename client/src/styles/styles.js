@@ -7,4 +7,15 @@ const useHeaderStyles = makeStyles((theme) => ({
   },
 }));
 
-export { useHeaderStyles };
+const useUnauthenticatedStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  heroContent: {
+    padding: theme.spacing(8, 0, 6),
+  },
+}));
+
+export { useHeaderStyles, useUnauthenticatedStyles };
