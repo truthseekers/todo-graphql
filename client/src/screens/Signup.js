@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { CardElement } from "@stripe/react-stripe-js";
 import { useSignup } from "../utils/hooks";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Alert from "@material-ui/lab/Alert";
+import { useButtonStyles } from "../styles/styles";
 
 function Signup() {
+  const btnClasses = useButtonStyles();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -55,6 +58,46 @@ function Signup() {
           />
           <TextField
             fullWidth
+            placeholder="185 Berry St. Suite 550"
+            id="address"
+            label="Address"
+            margin="normal"
+            name="address"
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            placeholder="San Francisco"
+            id="city"
+            label="City"
+            margin="normal"
+            name="city"
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            placeholder="California"
+            id="state"
+            label="State"
+            margin="normal"
+            name="state"
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            placeholder="94103"
+            id="zip"
+            label="ZIP"
+            margin="normal"
+            name="zip"
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
             id="password"
             label="Password"
             margin="normal"
@@ -65,7 +108,14 @@ function Signup() {
             type="password"
             variant="outlined"
           />
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <CardElement />
+          <Button
+            classes={btnClasses}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+          >
             Sign Up
           </Button>
         </form>

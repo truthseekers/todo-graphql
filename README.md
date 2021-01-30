@@ -203,3 +203,6 @@ Branch - better-context-two-done (and -start)
 Lecture: Simple Signup in React and GraphQL Part one
 Lecture: Simple Signup Part Two
 Branch: - react-signup-done (and -start)
+
+Lecture: Stripe CardElement and textFields
+Branch - stripe-one-done (and -start)

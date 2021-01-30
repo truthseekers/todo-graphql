@@ -18,4 +18,10 @@ const useUnauthenticatedStyles = makeStyles((theme) => ({
   },
 }));
 
-export { useHeaderStyles, useUnauthenticatedStyles };
+const useButtonStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: "25px",
+  },
+}));
+
+export { useHeaderStyles, useButtonStyles, useUnauthenticatedStyles };
