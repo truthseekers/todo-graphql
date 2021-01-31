@@ -208,4 +208,7 @@ Lecture: Stripe CardElement and textFields
 Branch - stripe-one-done (and -start)
 
 Lecture: Creating a Stripe Customer
-Branch - stripe-two-done
+Branch - stripe-two-done (and -start)
+
+Lecture: Creating a payment method
+Branch - stripe-three-done (and -start)

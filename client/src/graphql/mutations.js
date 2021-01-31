@@ -47,9 +47,20 @@ const LOGOUT_MUTATION = gql`
 `;
 
 const SIGNUP_MUTATION = gql`
-  mutation Signup($firstName: String!, $email: String!, $password: String!) {
-    signup(firstName: $firstName, email: $email, password: $password) {
+  mutation Signup(
+    $firstName: String!
+    $email: String!
+    $password: String!
+    $paymentMethod: String!
+  ) {
+    signup(
+      firstName: $firstName
+      email: $email
+      password: $password
+      paymentMethod: $paymentMethod
+    ) {
       firstName
+      paymentMethod
       id
       email
     }
