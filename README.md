@@ -206,3 +206,6 @@ Branch: - react-signup-done (and -start)
 
 Lecture: Stripe CardElement and textFields
 Branch - stripe-one-done (and -start)
+
+Lecture: Creating a Stripe Customer
+Branch - stripe-two-done

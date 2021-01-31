@@ -1,12 +1,21 @@
+const { Stripe } = require("stripe");
+require("dotenv").config();
+const stripe = new Stripe(process.env.SECRET_KEY);
+
 const bcrypt = require("bcryptjs");
 const { AuthenticationError } = require("apollo-server-express");
-
 
 const Mutation = {
   signup: async (parent, args, context, info) => {
     const password = await bcrypt.hash(args.password, 10);
 
-    console.log(password);
+    const customer = await stripe.customers.create({
+      name: args.firstName,
+    });
+
+    console.log("stripe customer: ", customer);
+
+    return;
 
     await context.prisma.user.create({
       data: {
@@ -71,7 +80,7 @@ const Mutation = {
     }
 
     if (args.name.length <= 0) {
-      throw new Error("Todo must not be blank!")
+      throw new Error("Todo must not be blank!");
     }
 
     return context.prisma.todo.create({
