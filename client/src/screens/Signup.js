@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useSignup } from "../utils/hooks";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -14,14 +14,40 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const { doSignup, error } = useSignup();
+  const elements = useElements();
+  const stripe = useStripe();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const billingDetails = {
+      name: e.target.firstName.value,
+      email: e.target.email.value,
+      address: {
+        city: e.target.city.value,
+        line1: e.target.address.value,
+        state: e.target.state.value,
+        postal_code: e.target.zip.value,
+      },
+    };
+
+    const cardElement = elements.getElement("card");
+    const paymentMethodReq = await stripe.createPaymentMethod({
+      type: "card",
+      card: cardElement,
+      billing_details: billingDetails,
+    });
+
+    if (paymentMethodReq.error) {
+      // error handling
+    }
+    console.log("paymentMethod: ", paymentMethodReq);
 
     doSignup({
       variables: {
         email,
         password,
+        paymentMethod: paymentMethodReq.paymentMethod.id,
         firstName,
       },
     });

@@ -11,6 +11,10 @@ const Mutation = {
 
     const customer = await stripe.customers.create({
       name: args.firstName,
+      payment_method: args.paymentMethod,
+      invoice_settings: {
+        default_payment_method: args.paymentMethod,
+      },
     });
 
     console.log("stripe customer: ", customer);

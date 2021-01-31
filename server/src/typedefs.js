@@ -14,6 +14,7 @@ module.exports = gql`
       firstName: String!
       email: String!
       password: String!
+      paymentMethod: String!
       age: Int
     ): User
     login(email: String!, password: String!): User
