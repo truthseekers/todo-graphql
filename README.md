@@ -212,3 +212,6 @@ Branch - stripe-two-done (and -start)
 
 Lecture: Creating a payment method
 Branch - stripe-three-done (and -start)
+
+Lecture: Creating a Subscription and product
+Branch - stripe-four-done (and -start)

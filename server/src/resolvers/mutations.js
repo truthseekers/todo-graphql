@@ -19,6 +19,19 @@ const Mutation = {
 
     console.log("stripe customer: ", customer);
 
+    const subscription = await stripe.subscriptions.create({
+      customer: customer.id,
+      items: [{ price: process.env.FANCY_BIZ_TOOL }],
+      default_payment_method: args.paymentMethod,
+    });
+
+    if (subscription.status === "incomplete") {
+      console.log("problem!");
+      throw new Error("There was a problem with your card");
+    }
+
+    console.log("made it past subscription!");
+
     return;
 
     await context.prisma.user.create({
