@@ -60,7 +60,6 @@ const SIGNUP_MUTATION = gql`
       paymentMethod: $paymentMethod
     ) {
       firstName
-      paymentMethod
       id
       email
     }
