@@ -7,8 +7,6 @@ const { AuthenticationError } = require("apollo-server-express");
 
 const Mutation = {
   signup: async (parent, args, context, info) => {
-    const password = await bcrypt.hash(args.password, 10);
-
     const customer = await stripe.customers.create({
       name: args.firstName,
       payment_method: args.paymentMethod,
@@ -32,7 +30,7 @@ const Mutation = {
 
     console.log("made it past subscription!");
 
-    return;
+    const password = await bcrypt.hash(args.password, 10);
 
     await context.prisma.user.create({
       data: {

@@ -16,6 +16,8 @@ function Signup() {
   const { doSignup, error } = useSignup();
   const elements = useElements();
   const stripe = useStripe();
+  const [checkoutError, setCheckoutError] = useState("");
+  const [isProcessing, setProcessingTo] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,6 +33,8 @@ function Signup() {
       },
     };
 
+    setProcessingTo(true);
+
     const cardElement = elements.getElement("card");
     const paymentMethodReq = await stripe.createPaymentMethod({
       type: "card",
@@ -39,7 +43,9 @@ function Signup() {
     });
 
     if (paymentMethodReq.error) {
-      // error handling
+      setCheckoutError(paymentMethodReq.error.message);
+      setProcessingTo(false);
+      return;
     }
     console.log("paymentMethod: ", paymentMethodReq);
 
@@ -51,6 +57,16 @@ function Signup() {
         firstName,
       },
     });
+  };
+
+  const handleCardDetailsChange = (ev) => {
+    ev.error ? setCheckoutError(ev.eror.message) : setCheckoutError();
+  };
+
+  const cardElementOpts = {
+    iconStyle: "solid",
+    // style: someStyles
+    hidePostalCode: true,
   };
 
   return (
@@ -134,13 +150,17 @@ function Signup() {
             type="password"
             variant="outlined"
           />
-          <CardElement />
+          <CardElement
+            options={cardElementOpts}
+            onChange={handleCardDetailsChange}
+          />
           <Button
             classes={btnClasses}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
+            disabled={isProcessing || !stripe}
           >
             Sign Up
           </Button>
