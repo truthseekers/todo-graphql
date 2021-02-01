@@ -60,7 +60,7 @@ function Signup() {
   };
 
   const handleCardDetailsChange = (ev) => {
-    ev.error ? setCheckoutError(ev.eror.message) : setCheckoutError();
+    ev.error ? setCheckoutError(ev.error.message) : setCheckoutError();
   };
 
   const cardElementOpts = {
@@ -165,6 +165,7 @@ function Signup() {
             Sign Up
           </Button>
         </form>
+        {checkoutError && <Alert severity="error">{checkoutError}</Alert>}
         {error && <Alert severity="error">{error}</Alert>}
       </div>
     </Container>
