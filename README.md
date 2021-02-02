@@ -215,3 +215,6 @@ Branch - stripe-three-done (and -start)
 
 Lecture: Creating a Subscription and product
 Branch - stripe-four-done (and -start)
+
+Lecture: Checkout Error Handling
+Branch - stripe-four-done
