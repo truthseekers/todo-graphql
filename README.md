@@ -23,11 +23,12 @@
 6. cd todo-graphql/server
 7. npm install
 8. npx prisma migrate up --experimental
-9. npx prisma generate
-10. open server folders .env
+9. Yes to add new DB
+10. npx prisma generate
+11. open server folders .env
     1. Paste in SECRET_KEY="your_secret_key" from stripe (should be same key as REACT_APP_SECRET_KEY)
     2. Paste in FANCY_BIZ_TOOL=your_price_id (from the product you created in Stripe)
-11. nodemon src/index.js
+12. nodemon src/index.js
 
 (Don't forget to remove .env from source control!)
 
