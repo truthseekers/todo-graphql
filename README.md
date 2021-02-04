@@ -1,3 +1,38 @@
+# How to Setup the final project
+
+0. create free Stripe Account
+1. visit dashboard and click "products" in sidebar -> + Add Product
+2. Fill out name, description, select "standard pricing"
+3. Add a $ amount in Price.
+4. Select "Recurring" & monthly billing period.
+5. Click "Save Product"
+
+6. Click "developers" in sidebar -> API Keys to get Publishable & Secret Keys
+
+7. git clone https://github.com/truthseekers/todo-graphql.git
+8. cd todo-graphql
+9. cd client
+10. npm install
+11. in .env, Copy Stripe Publishable Key and paste after REACT_APP_STRIPE_PUBLISHABLE_KEY= (replace existing key)
+12. in .env, Copy Stripe SECRET KEY and paste after REACT_APP_SECRET_KEY= (replace existing key)
+13. npm start
+
+(Don't forget to remove .env from source control!)
+
+5. open new terminal.
+6. cd todo-graphql/server
+7. npm install
+8. npx prisma migrate up --experimental
+9. npx prisma generate
+10. open server folders .env
+    1. Paste in SECRET_KEY="your_secret_key" from stripe (should be same key as REACT_APP_SECRET_KEY)
+    2. Paste in FANCY_BIZ_TOOL=your_price_id (from the product you created in Stripe)
+11. nodemon src/index.js
+
+(Don't forget to remove .env from source control!)
+
+# Lectures & Branches
+
 Lecture: GraphQL Hello Worl with graphql-yoga
 Branch - hello-world-done
 
