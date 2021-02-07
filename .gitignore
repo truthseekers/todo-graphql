@@ -7,3 +7,5 @@ server/node_modules/
 server/prisma/dev.db
 /client/.env
 /server/.env
+/client/.env
+/server/.env
