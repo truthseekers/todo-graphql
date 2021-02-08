@@ -5,3 +5,5 @@ server/node_modules/
 /client/.eslintcache
 
 server/prisma/dev.db
+/client/.env
+/server/.env
