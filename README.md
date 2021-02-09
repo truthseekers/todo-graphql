@@ -13,24 +13,21 @@
 8. cd todo-graphql
 9. cd client
 10. npm install
-11. in .env, Copy Stripe Publishable Key and paste after REACT_APP_STRIPE_PUBLISHABLE_KEY= (replace existing key)
-12. in .env, Copy Stripe SECRET KEY and paste after REACT_APP_SECRET_KEY= (replace existing key)
+11. create a client/.env file. In client/.env, Copy Stripe Publishable Key and make the line REACT_APP_STRIPE_PUBLISHABLE_KEY=your_publishable_key
+
+12. in client/.env, Copy Stripe SECRET KEY and make the line REACT_APP_SECRET_KEY=YOUR_SECRET_KEY
 13. npm start
 
-(Don't forget to remove .env from source control!)
-
-5. open new terminal.
-6. cd todo-graphql/server
-7. npm install
-8. npx prisma migrate up --experimental
-9. Yes to add new DB
-10. npx prisma generate
-11. open server folders .env
-    1. Paste in SECRET_KEY="your_secret_key" from stripe (should be same key as REACT_APP_SECRET_KEY)
-    2. Paste in FANCY_BIZ_TOOL=your_price_id (from the product you created in Stripe)
-12. nodemon src/index.js
-
-(Don't forget to remove .env from source control!)
+14. open new terminal.
+15. cd todo-graphql/server
+16. npm install
+17. npx prisma migrate up --experimental
+18. Yes to add new DB
+19. npx prisma generate
+20. Create a server/.env file.
+    1. make the line SECRET_KEY=your_secret_key (from stripe)
+    2. make the line FANCY_BIZ_TOOL=your_price_id (from the product you created in Stripe)
+21. nodemon src/index.js
 
 # Lectures & Branches
 
