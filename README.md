@@ -67,6 +67,9 @@ Branch - one-to-many-done (and -start)
 Lecture: add and delete todos
 Branch - add-delete-todos-done (and -start)
 
+Lecture: Many to Many relationships
+Branch - many-to-many-done (and -start)
+
 ------------------------- Prisma ------------------------
 
 Lecture: Installing Prisma & findMany users
